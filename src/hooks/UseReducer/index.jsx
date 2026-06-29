@@ -1,0 +1,57 @@
+import {useReducer} from "react";
+
+
+export const ReducerComp = () =>{
+
+    const initialState = {
+        count:0,
+            inc:2,
+            dec:2 ,
+
+    };
+
+
+
+    const reducer=(state,action)=>{
+
+        console.log(state,action);
+
+        // if(action.type ==="INCREMENT"){
+        //     return state+1;
+        // }
+        // if(action.type ==="DECREMENT"){
+        //     return state-1;
+        // }
+        // if(action.type === "RESET"){
+        // return  state=0;}
+        // return state;
+
+
+         switch(action.type){
+            case "INCREMENT": return {
+                ...state,count: state.count + state.inc,
+            };
+            case "DECREMENT": return {
+                ...state,count:state.count - state.dec,
+            };
+            case "RESET" : return{
+                ...state,count:0};
+
+                 default:
+                     return state;
+        }
+
+
+    };
+
+    //const [count,setCount]=useState(0);
+    const[state , dispatch] =useReducer(reducer,initialState);
+    return (
+        <div>
+            <h1>{state.count}</h1>
+            <button onClick={()=>dispatch({type:"INCREMENT"})} disabled={state.count>=20}>Incremant</button>
+            <button onClick={()=>dispatch({type:"DECREMENT"})} disabled={state.count<=-20}>Decrement</button>
+            <button onClick={()=>dispatch({type:"RESET"})}>Reset</button>
+        </div>
+    )
+}
