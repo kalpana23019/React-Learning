@@ -114,7 +114,7 @@ This repository is created to:
 * [x] useContext
 * [x] useReducer
 * [x] React.memo
-* [x] useCallback
+* [ ] useCallback
 * [ ] useMemo
 * [ ] Custom Hooks
 * [ ] React Router
